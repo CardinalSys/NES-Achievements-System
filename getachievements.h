@@ -7,6 +7,7 @@ class GetAchievements
 {
 public:
     GetAchievements(std::list<Achievement>& achievements);
+
 };
 
 #endif // GETACHIEVEMENTS_H

@@ -17,12 +17,14 @@ int main(int argc, char *argv[])
 
         std::list<Achievement> achievements;
         GetAchievements getAchievements(achievements);
+        w.setAchievements(achievements);
         for (const auto& achievement : achievements) {
-            qDebug() << "Achievement Name:" << QString::fromStdString(achievement.name);
+
 
         }
 
     }
+
     return a.exec();
 }
 

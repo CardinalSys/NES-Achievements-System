@@ -4,6 +4,7 @@
         "Id": 0,
         "Name": "Sword",
         "Description": "You have obtained the sword",
+        "Url": "",
         "AoB": "null",
         "Value": 1,
         "Obtained": 0
@@ -13,6 +14,7 @@
         "Id": 1,
         "Name": "Kill 10 enemies",
         "Description": "You have killed 10 enemies",
+        "Url": "",
         "AoB": "null",
         "Value": 1,
         "Obtained": 0
