@@ -25,9 +25,10 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         ${PROJECT_SOURCES}
         proc.c
         cJSON.h
-        cJSON.c
+        cJSON.cpp
         getachievements.h getachievements.cpp
         Achievements.json
+        achievement.h
 
     )
 # Define target properties for Android with Qt 6 as:

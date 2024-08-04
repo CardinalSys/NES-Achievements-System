@@ -14,8 +14,14 @@ int main(int argc, char *argv[])
     struct Process proc = GetProcessByName("Mesen.exe");
     if(proc.pid != 0){
         w.UpdateProcStatusLabel("Mesen.exe was hooked");
-        char testName[256] = {0}; // Initialize a buffer for the name
-        GetAchievements getAchievements(testName);
+
+        std::list<Achievement> achievements;
+        GetAchievements getAchievements(achievements);
+        for (const auto& achievement : achievements) {
+            qDebug() << "Achievement Name:" << QString::fromStdString(achievement.name);
+
+        }
+
     }
     return a.exec();
 }

@@ -1,9 +1,20 @@
-{
-    "GameId": 0,
-    "Id": 0,
-    "Name": "Sword",
-    "Description": "You have obtained the sword",
-    "AoB": "null",
-    "Value": 1,
-    "Obtained": 1
-}
+[
+    {
+        "GameId": 0,
+        "Id": 0,
+        "Name": "Sword",
+        "Description": "You have obtained the sword",
+        "AoB": "null",
+        "Value": 1,
+        "Obtained": 0
+    },
+    {
+        "GameId": 0,
+        "Id": 1,
+        "Name": "Kill 10 enemies",
+        "Description": "You have killed 10 enemies",
+        "AoB": "null",
+        "Value": 1,
+        "Obtained": 0
+    }
+]
