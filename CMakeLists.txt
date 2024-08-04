@@ -25,7 +25,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         ${PROJECT_SOURCES}
         proc.c
         cJSON.h
-        cJSON.cpp
+        cJSON.c
         getachievements.h getachievements.cpp
         Achievements.json
 
