@@ -14,16 +14,11 @@ int main(int argc, char *argv[])
     struct Process proc = GetProcessByName("Mesen.exe");
     if(proc.pid != 0){
         w.UpdateProcStatusLabel("Mesen.exe was hooked");
-
-        std::list<Achievement> achievements;
-        GetAchievements getAchievements(achievements);
-        w.setAchievements(achievements);
-        for (const auto& achievement : achievements) {
-
-
-        }
-
     }
+
+    std::list<Achievement> achievements;
+    GetAchievements getAchievements(achievements);
+    w.setAchievements(achievements);
 
     return a.exec();
 }

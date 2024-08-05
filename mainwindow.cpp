@@ -52,7 +52,6 @@ void MainWindow::ShowGameInfo()
             column = 0;
             row++;
         }
-        //Add a tooltip
     }
 }
 
