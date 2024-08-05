@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="GameList">
      <widget class="QScrollArea" name="scrollArea">
@@ -136,14 +136,14 @@ min-width: 80px; /* Ensures the button has a minimum width */
      <widget class="QLabel" name="gameNameLabel">
       <property name="geometry">
        <rect>
-        <x>340</x>
-        <y>30</y>
+        <x>320</x>
+        <y>20</y>
         <width>101</width>
         <height>20</height>
        </rect>
       </property>
       <property name="text">
-       <string>TextLabel</string>
+       <string>Achievements</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -182,6 +182,19 @@ min-width: 80px; /* Ensures the button has a minimum width */
         <layout class="QGridLayout" name="achievementsLayout"/>
        </widget>
       </widget>
+     </widget>
+     <widget class="QPushButton" name="returnToMainBtn">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>20</y>
+        <width>41</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;---</string>
+      </property>
      </widget>
     </widget>
    </widget>

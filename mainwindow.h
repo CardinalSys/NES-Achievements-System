@@ -19,6 +19,7 @@ public:
     ~MainWindow();
     void UpdateProcStatusLabel(QString label);
     void setAchievements(const std::list<Achievement>& achievements);
+    void GoBackToMain();
 
 private slots:
     void ShowGameInfo();

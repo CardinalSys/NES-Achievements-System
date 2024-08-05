@@ -8,6 +8,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
     connect(ui->zeldaBtn, &QPushButton::clicked, this, &MainWindow::ShowGameInfo);
+    connect(ui->returnToMainBtn, &QPushButton::clicked, this, &MainWindow::GoBackToMain);
 
 }
 
@@ -35,18 +36,26 @@ void MainWindow::ShowGameInfo()
     qDebug("1");
     for (const auto& achievement : achievements) {
         qDebug() << "Achievement Name:" << QString::fromStdString(achievement.name);
-        QPushButton *achievementButton = new QPushButton(this);
-        achievementButton->setStyleSheet("border-image: url(':/new/prefix1/zeldaCover.png') 0 0 0 0 stretch stretch;"
-                                         "height: 100px; width: 80px;"
-                                         "min-width: 80px; max-width: 80px;"
-                                         "min-height: 100px; max-height: 100px;");
-        achievementButton->setToolTip(QString::fromStdString(achievement.name));  // Tooltip with achievement name
+        QLabel *achievementLabel = new QLabel(this);
+        achievementLabel->setFixedWidth(100);
+        achievementLabel->setFixedHeight(100);
+        QPixmap pix(":/new/prefix1/zeldaCover.png");
+        int w = achievementLabel->width ();
+        int h = achievementLabel->height ();
+        achievementLabel->setPixmap (pix.scaled (w,h,Qt::KeepAspectRatio));
 
-        gridLayout->addWidget(achievementButton, row, column);
+        achievementLabel->setToolTip(QString::fromStdString(achievement.name));
+
+        gridLayout->addWidget(achievementLabel, row, column);
         column++;
-        if (column >= 4) {  // Assuming 4 columns
+        if (column >= 4) {
             column = 0;
             row++;
         }
+        //Add a tooltip
     }
+}
+
+void MainWindow::GoBackToMain(){
+    ui->stackedWidgetView->setCurrentIndex(0);
 }
