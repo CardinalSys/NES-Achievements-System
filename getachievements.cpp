@@ -38,37 +38,64 @@ GetAchievements::GetAchievements(std::list<Achievement>& achievementList) {
         return;
     }
 
-
-    cJSON *achievement = NULL;
-    cJSON_ArrayForEach(achievement, json) {
-
-        if (!cJSON_IsObject(achievement)) {
-            continue; // Skip non-object items
+    cJSON *game = NULL;
+    cJSON_ArrayForEach(game, json) {
+        if (!cJSON_IsObject(game)) {
+            continue;
         }
 
-        Achievement a;
-        a.gameId = cJSON_GetObjectItemCaseSensitive(achievement, "GameId")->valueint;
-        a.id = cJSON_GetObjectItemCaseSensitive(achievement, "Id")->valueint;
-
-        cJSON *name = cJSON_GetObjectItemCaseSensitive(achievement, "Name");
-        if (cJSON_IsString(name) && (name->valuestring != NULL)) {
-            a.name = name->valuestring;
+        cJSON *achievementsArray = cJSON_GetObjectItemCaseSensitive(game, "Achievements");
+        if (!cJSON_IsArray(achievementsArray)) {
+            qDebug("Error: Achievements is not an array.\n");
+            continue;
         }
 
-        cJSON *description = cJSON_GetObjectItemCaseSensitive(achievement, "Description");
-        if (cJSON_IsString(description) && (description->valuestring != NULL)) {
-            a.description = description->valuestring;
+        cJSON *achievement = NULL;
+        cJSON_ArrayForEach(achievement, achievementsArray) {
+            if (!cJSON_IsObject(achievement)) {
+                continue;
+            }
+
+            Achievement a;
+            a.gameId = cJSON_GetObjectItemCaseSensitive(game, "GameId")->valueint;
+
+            cJSON *id = cJSON_GetObjectItemCaseSensitive(achievement, "Id");
+            if (cJSON_IsNumber(id)) {
+                a.id = id->valueint;
+            }
+
+            cJSON *name = cJSON_GetObjectItemCaseSensitive(achievement, "Name");
+            if (cJSON_IsString(name) && (name->valuestring != NULL)) {
+                a.name = name->valuestring;
+            }
+
+            cJSON *description = cJSON_GetObjectItemCaseSensitive(achievement, "Description");
+            if (cJSON_IsString(description) && (description->valuestring != NULL)) {
+                a.description = description->valuestring;
+            }
+
+            cJSON *url = cJSON_GetObjectItemCaseSensitive(achievement, "Url");
+            if (cJSON_IsString(url) && (url->valuestring != NULL)) {
+                a.url = url->valuestring;
+            }
+
+            cJSON *offset = cJSON_GetObjectItemCaseSensitive(achievement, "Offset");
+            if (cJSON_IsString(offset) && (offset->valuestring != NULL)) {
+                a.offset = offset->valuestring;
+            }
+
+            cJSON *value = cJSON_GetObjectItemCaseSensitive(achievement, "Value");
+            if (cJSON_IsNumber(value)) {
+                a.value = value->valueint;
+            }
+
+            cJSON *obtained = cJSON_GetObjectItemCaseSensitive(achievement, "Obtained");
+            if (cJSON_IsNumber(obtained)) {
+                a.obtained = obtained->valueint;
+            }
+
+            achievementList.push_back(a);
         }
-
-        cJSON *aob = cJSON_GetObjectItemCaseSensitive(achievement, "AoB");
-        if (cJSON_IsString(aob) && (aob->valuestring != NULL)) {
-            a.aob = aob->valuestring;
-        }
-
-        a.value = cJSON_GetObjectItemCaseSensitive(achievement, "Value")->valueint;
-        a.obtained = cJSON_GetObjectItemCaseSensitive(achievement, "Obtained")->valueint;
-
-        achievementList.push_back(a);
     }
 
     cJSON_Delete(json);

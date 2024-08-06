@@ -8,7 +8,8 @@ struct Achievement {
     int id;
     std::string name;
     std::string description;
-    std::string aob;
+    std::string url;
+    std::string offset;
     int value;
     int obtained;
 };
